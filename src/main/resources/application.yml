@@ -5,7 +5,14 @@ spring:
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
-
+  thymeleaf:
+    suffix: .html
+    check-template-location: true
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    cache: false
+    mode: LEGACYHTML5
 
 
 #    pagehelper.helper-dialect=mysql
@@ -17,3 +24,5 @@ pagehelper:
   params: params=count=countSql
   reasonable: true
   support-methods-arguments: true
+
+

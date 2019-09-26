@@ -1,5 +1,7 @@
 package com.homolo.homolo.utils;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import org.springframework.util.StringUtils;
 
 import java.security.MessageDigest;
@@ -71,5 +73,22 @@ public class EncryptionUtil {
 			buf.append(HEX_DIGITS[bytes[j] & 0x0f]);
 		}
 		return buf.toString();
+	}
+
+	/**
+	 * Brypt加密方式.
+	 * @param text 加密文本
+	 * @return 加密后字符串
+	 */
+	public static String getBCryptEnCode(String text) {
+		return new BCryptPasswordEncoder().encode(text);
+	}
+	/**
+	 * Srypt加密方式.
+	 * @param text 加密文本
+	 * @return 加密后字符串
+	 */
+	public static String getSCryptEncode(String text) {
+		return new SCryptPasswordEncoder().encode(text);
 	}
 }

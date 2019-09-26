@@ -29,8 +29,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		//内存用户
-		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("zhuhui").password(new BCryptPasswordEncoder().encode("zhuhui@#")).roles("admin");
-		auth.userDetailsService(userDateilService);
+//		auth.inMemoryAuthentication().passwordEncoder(new BCryptPasswordEncoder()).withUser("zhuhui").password(new BCryptPasswordEncoder().encode("zhuhui@#")).roles("admin");
+		auth.userDetailsService(userDateilService).passwordEncoder(passwordEncoder());
 	}
 
 	@Override
@@ -46,9 +46,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and()
 		.logout().logoutUrl("/logout").logoutSuccessUrl("/login").permitAll();
 	}
+
+	/**
+	 * 配置加密方式.
+	 * @return
+	 */
 	@Bean
-	public static PasswordEncoder passwordEncoder() {
-		return NoOpPasswordEncoder.getInstance();
+	public static BCryptPasswordEncoder passwordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 
 }

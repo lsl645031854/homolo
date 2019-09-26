@@ -1,50 +1,47 @@
 package com.homolo.homolo.entity;
 
+import lombok.Data;
+
+import java.util.Date;
+
 /**
  * @Author homolo--
  * @DESC
  * @Create 2019-08-23  下午12:18
  */
+@Data
 public class User {
 
-	private Integer id;
-	private String name;
-	private Integer age;
+	private String userid;
 
-	public User(String name, Integer age) {
-		this.name = name;
-		this.age = age;
-	}
+	private String username;
 
-	public User() {
-	}
+	private String password;
 
-	public String getName() {
-		return name;
-	}
+	private String usernick;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+	private Date birthday;
 
-	public Integer getAge() {
-		return age;
-	}
+	private int age;
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}
+	private int sex;
 
-	public Integer getId() {
-		return id;
-	}
+	private String email;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	private int disabled;
 
-	@Override
-	public String toString() {
-		return "User{" + "name='" + name + '\'' + ", age=" + age + '}';
-	}
+	private String mobile;
+
+	private String description;
+
+	private String avatar;
+
+	private String idnunber;
+
+	private String address;
+
+	private Date create_time;
+
+	private Date update_time;
+
 }

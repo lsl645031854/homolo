@@ -5,6 +5,8 @@ import com.homolo.homolo.service.impl.UserDateilServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,13 +27,10 @@ public class LoginController {
 	Logger logger = LoggerFactory.getLogger(getClass());
 
 	@RequestMapping(value = {"/", "/hello"}, method = RequestMethod.GET)
-	public String welcome(ModelMap modelMap) {
-		modelMap.addAttribute("title", "demo");
-		modelMap.addAttribute("message", "你好，我是demo");
+	public String welcome() {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-		ModelAndView modelAndView = new ModelAndView("/hello");
-		modelAndView.addObject("title", "demo");
-		modelAndView.addObject("message", "你好，我是demo");
+		this.logger.info("用户信息:" + authentication.getName());
 		return "hello";
 	}
 	@RequestMapping(value = "/login", method = RequestMethod.GET)

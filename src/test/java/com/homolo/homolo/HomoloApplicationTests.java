@@ -45,7 +45,7 @@ public class HomoloApplicationTests {
 		logger.info("单个数据:{}", user1.toString());
 		List<User> users = this.userService.queryAllUsers();
 		users.forEach(user -> {
-			logger.info("姓名为:{}-----id为:{}", user.getName(), user.getId());
+			logger.info("姓名为:{}-----id为:{}", user.getUsername(), user.getUserid());
 		});
 	}
 

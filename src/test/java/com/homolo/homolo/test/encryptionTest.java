@@ -16,18 +16,9 @@ public class encryptionTest {
 	public static final String text = "zhuhui";
 	@Test
 	public void test1() throws NoSuchAlgorithmException {
-		MessageDigest sha = MessageDigest.getInstance("sha");
-		sha.update(text.getBytes());
-		byte []shaBin = sha.digest();
-		printBytes(shaBin);
-		System.out.println(EncryptionUtil.encode(text));
+		String str = EncryptionUtil.getBCryptEnCode("zhuhui");
+		System.out.println(str);
 	}
 
-	public static void printBytes(byte[] b) {
-		for(int i=0;i<b.length;i++) {
-			System.out.printf("%02X", b[i]);
-		}
-		System.out.println();
-	}
 
 }

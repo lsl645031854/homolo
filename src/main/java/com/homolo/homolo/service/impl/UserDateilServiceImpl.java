@@ -1,6 +1,7 @@
 package com.homolo.homolo.service.impl;
 
 import com.homolo.homolo.dao.UserServiceDao;
+import com.homolo.homolo.security.UserDetailInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.User;
@@ -26,6 +27,7 @@ public class UserDateilServiceImpl implements UserDetailsService {
 			throw new UsernameNotFoundException("用户不存在");
 		}
 		User user  = new User(userInfo.getUsername(), userInfo.getPassword(), AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
-		return user;
+		return new UserDetailInfo(userInfo);
+//		return user;
 	}
 }

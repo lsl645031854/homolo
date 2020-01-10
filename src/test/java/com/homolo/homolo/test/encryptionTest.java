@@ -16,7 +16,7 @@ public class encryptionTest {
 	public static final String text = "zhuhui";
 	@Test
 	public void test1() throws NoSuchAlgorithmException {
-		String str = EncryptionUtil.getBCryptEnCode("zhuhui");
+		String str = EncryptionUtil.getBCryptEnCode("123456");
 		System.out.println(str);
 	}
 

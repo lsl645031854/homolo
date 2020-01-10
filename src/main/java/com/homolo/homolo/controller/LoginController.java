@@ -2,6 +2,7 @@ package com.homolo.homolo.controller;
 
 import com.homolo.homolo.service.UserServiceImpl;
 import com.homolo.homolo.service.impl.UserDateilServiceImpl;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * @Author: ZH
@@ -42,4 +46,37 @@ public class LoginController {
 		return "loginTest";
 	}
 
+	@RequestMapping(value = "/testI", method = RequestMethod.GET)
+	@ResponseBody
+	public String testI(HttpServletRequest request) {
+		String numStr = request.getParameter("num");
+		int num = 1;
+		if (StringUtils.isNotBlank(numStr)) {
+			try {
+				num = Integer.parseInt(numStr);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		this.userDetailService.testI(num);
+		logger.info("执行插入操作完毕，共" + num + "条");
+		return "执行完成,共" + num + "条";
+	}
+
+	@RequestMapping(value = "/testBatchInsertProcedure", method = RequestMethod.GET)
+	@ResponseBody
+	public String testBatchInsertProcedure(HttpServletRequest request) {
+		String numStr = request.getParameter("num");
+		int num = 1;
+		if (StringUtils.isNotBlank(numStr)) {
+			try {
+				num = Integer.parseInt(numStr);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+		}
+		this.userDetailService.testBatchInsertProcedure(num);
+		logger.info("执行插入操作完毕，共" + num + "条");
+		return "执行完成,共" + num + "条";
+	}
 }

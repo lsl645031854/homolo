@@ -27,8 +27,16 @@
 
     <select id="loadUserByUsername" resultMap="BaseResultMap">
         <![CDATA[
-            SELECT * FROM user WHERE username=#{username}
+            SELECT * FROM myUser WHERE username=#{username}
         ]]>
+    </select>
+
+    <insert id="testI">
+        INSERT INTO testNum VALUES (default, 'qqq','www','eee','rrr','ttt',now());
+    </insert>
+
+    <select id="testBatchInsertProcedure">
+        call procedure_testBatch_insert(${num});
     </select>
 
 
